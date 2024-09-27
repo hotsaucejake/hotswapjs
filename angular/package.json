@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --configuration production && cp ../hotswapjs/public/angular/index.html ../hotswapjs/resources/views/angular.blade.php",
+    "build:prod": "ng build --configuration production && cp ../hotswapjs/public/angular/browser/index.html ../hotswapjs/resources/views/angular.blade.php",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:angular": "node dist/angular/server/server.mjs"
