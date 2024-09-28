@@ -13,12 +13,7 @@ class HotSwapJSController extends Controller
      */
     public function __invoke(Request $request): View|RedirectResponse
     {
-        if ($request->has('frontend')) {
-            $request->session()->put('frontend', $request->frontend);
-
-            return redirect('/');
-        }
-
+        // TODO: make this a service
         $frontend = $request->session()->get('frontend', 'welcome');
 
         return view($frontend);
