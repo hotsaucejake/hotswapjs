@@ -29,6 +29,7 @@
         border-radius: 0.25rem;
         font-size: 1rem;
         color: #333;
+        background-color: #fff;
     }
 
     /* Add some spacing for the rest of the page content */

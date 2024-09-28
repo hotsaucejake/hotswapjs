@@ -5,6 +5,7 @@ return [
     'frontends' => [
         'welcome',
         'angular',
+        'svelte',
         'vue',
     ],
 
