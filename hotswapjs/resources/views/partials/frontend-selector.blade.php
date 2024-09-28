@@ -1,76 +1,58 @@
 <style>
-    form.frontend-selector {
-        max-width: 24rem;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    form.frontend-selector > label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-        font-weight: 500;
-        color: rgb(17 24 39 / 1);
-    }
-
-    :is(.dark form.frontend-selector > label) {
-        color: rgb(255 255 255 / 1);
-    }
-
-    form.frontend-selector > select {
-        background-color: rgb(249 250 251 / 1);
-        border-width: 1px;
-        border-color: rgb(209 213 219 / 1);
-        color: rgb(17 24 39 / 1);
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-        border-radius: 0.5rem;
-    }
-
-    form.frontend-selector > select:focus {
-        border-color: rgb(59 130 246 / 1);
-    }
-
-    form.frontend-selector > select {
-        display: block;
+    /* Topbar wrapper */
+    .topbar {
         width: 100%;
-        padding: 0.625rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #f8f9fa; /* Light background */
+        border-bottom: 1px solid #ddd; /* Add a subtle bottom border */
+        z-index: 1000; /* Ensure it stays on top */
+        padding: 0.5rem 1rem; /* Add some padding */
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center; /* Center the selector horizontally */
+        align-items: center; /* Align the items in the center vertically */
     }
 
-    :is(.dark form.frontend-selector > select) {
-        background-color: rgb(55 65 81 / 1);
-        border-color: rgb(75 85 99 / 1);
+    /* Form styling inside the topbar */
+    form.frontend-selector {
+        max-width: 20rem; /* Limit the width of the form */
+        width: 100%;
     }
 
-    :is(.dark form.frontend-selector > select)::-moz-placeholder {
-        color: rgb(156 163 175 / 1);
+    /* Ensure select element is styled properly */
+    form.frontend-selector select {
+        padding: 0.5rem;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        color: #333;
     }
 
-    :is(.dark form.frontend-selector > select)::placeholder {
-        color: rgb(156 163 175 / 1);
+    /* Add some spacing for the rest of the page content */
+    body {
+        padding-top: 3rem; /* Ensure content doesn’t overlap with the topbar */
     }
 
-    :is(.dark form.frontend-selector > select) {
-        color: rgb(255 255 255 / 1);
-    }
-
-    :is(.dark form.frontend-selector > select:focus) {
-        border-color: rgb(59 130 246 / 1);
-    }
 </style>
 
-<form action="{{ route('frontend') }}" method="POST" id="frontend-selector-form" class="frontend-selector">
-    @csrf
-    <select name="frontend" id="frontend-selector" onchange="document.getElementById('frontend-selector-form').submit()">
-        @foreach(config('hotswapjs.frontends') as $frontend)
-            <option value="{{ $frontend }}" {{ session('frontend') === $frontend ? 'selected' : '' }}>
-                @if($frontend === 'welcome')
-                    Laravel Blade
-                @else
-                    {{ ucfirst($frontend) }}
-                @endif
-            </option>
-        @endforeach
-    </select>
-</form>
+<div class="topbar">
+    <form action="{{ route('frontend') }}" method="POST" id="frontend-selector-form" class="frontend-selector">
+        @csrf
+        <select name="frontend" id="frontend-selector" onchange="document.getElementById('frontend-selector-form').submit()">
+            @foreach(config('hotswapjs.frontends') as $frontend)
+                <option value="{{ $frontend }}" {{ session('frontend') === $frontend ? 'selected' : '' }}>
+                    @if($frontend === 'welcome')
+                        Laravel Blade
+                    @else
+                        {{ ucfirst($frontend) }}
+                    @endif
+                </option>
+            @endforeach
+        </select>
+    </form>
+</div>
+
+
