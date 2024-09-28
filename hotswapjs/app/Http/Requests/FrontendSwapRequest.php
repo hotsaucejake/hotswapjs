@@ -22,15 +22,10 @@ class FrontendSwapRequest extends FormRequest
      */
     public function rules(): array
     {
-        $frontend = [
-          'welcome',
-          'angular',
-        ];
-
         return [
             'frontend' => [
                 'required',
-                Rule::in($frontend),
+                Rule::in(config('hotswapjs.frontends')),
             ],
         ];
     }
