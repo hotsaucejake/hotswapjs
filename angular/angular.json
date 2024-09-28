@@ -18,8 +18,8 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "../hotswapjs/public/angular",
-            "baseHref": "/angular/",
-            "deployUrl": "/angular/",
+            "baseHref": "/",
+            "deployUrl": "/angular/browser/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -36,12 +36,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -58,15 +53,15 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/angular/",
-              "deployUrl": "/angular/"
+              "baseHref": "/",
+              "deployUrl": "/angular/browser/"
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "baseHref": "/angular/",
-              "deployUrl": "/angular/"
+              "baseHref": "/",
+              "deployUrl": "/angular/browser/"
             }
           },
           "defaultConfiguration": "production"
