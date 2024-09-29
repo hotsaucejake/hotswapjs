@@ -1,0 +1,16 @@
+{
+  "name": "vanilla",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "build:prod": "npm run build && cp ../hotswapjs/public/vanilla/index.html ../hotswapjs/resources/views/vanilla.blade.php"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1"
+  }
+}
