@@ -8,6 +8,7 @@ return [
         'lit',
         'preact',
         'react',
+        'solid',
         'svelte',
         'vanilla',
         'vue',
