@@ -12,6 +12,11 @@
 
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        code[class*="language-"], pre[class*="language-"] {
+            font-size: 1em !important;
+        }
+    </style>
 </head>
 <body class="font-sans antialiased bg-gray-50 text-black dark:bg-gray-900 dark:text-white">
 <div class="bg-gray-50 dark:bg-gray-900">
@@ -25,7 +30,7 @@
         <div class="relative w-full max-w-6xl px-6 py-8">
             <!-- Blog Content -->
             <div class="mt-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                <article class="prose prose-2xl dark:prose-invert mx-auto">
+                <article class="prose prose-base dark:prose-invert mx-auto max-w-5xl prose-a:text-blue-400">
                     <!-- Blog Post Content Starts Here -->
                     <!-- Title -->
                     <h1 class="text-3xl font-bold mb-4 text-center">
@@ -71,27 +76,27 @@
                         <li><a href="#laravel-routes-setup" class="text-blue-600 hover:underline">Laravel Routes Setup</a></li>
                         <li>
                             <a href="#controllers" class="text-blue-600 hover:underline">Controllers</a>
-                            <ul class="ml-6 list-disc list-inside">
+                            <ul class="list-disc list-inside">
                                 <li><a href="#frontendswapcontroller" class="text-blue-600 hover:underline">FrontendSwapController</a></li>
                                 <li><a href="#hotswapjscontroller" class="text-blue-600 hover:underline">HotSwapJSController</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#services" class="text-blue-600 hover:underline">Services</a>
-                            <ul class="ml-6 list-disc list-inside">
+                            <ul class="list-disc list-inside">
                                 <li><a href="#frontendservice" class="text-blue-600 hover:underline">FrontendService</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#requests" class="text-blue-600 hover:underline">Requests</a>
-                            <ul class="ml-6 list-disc list-inside">
+                            <ul class="list-disc list-inside">
                                 <li><a href="#frontendswaprequest" class="text-blue-600 hover:underline">FrontendSwapRequest</a></li>
                             </ul>
                         </li>
                         <li><a href="#configuration" class="text-blue-600 hover:underline">Configuration</a></li>
                         <li>
                             <a href="#frontend-configuration" class="text-blue-600 hover:underline">Frontend Configuration</a>
-                            <ul class="ml-6 list-disc list-inside">
+                            <ul class="list-disc list-inside">
                                 <li><a href="#angular-setup" class="text-blue-600 hover:underline">Angular Setup</a></li>
                                 <li><a href="#vue-setup" class="text-blue-600 hover:underline">Vue Setup</a></li>
                                 <li><a href="#other-frontend-frameworks" class="text-blue-600 hover:underline">Other Frontend Frameworks</a></li>
@@ -154,7 +159,7 @@ hotswapjs/
                         In the <code>routes/web.php</code> file, we define the routes needed for frontend swapping and handling all non-API requests.
                     </p>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-php text-sm">
+<code class="language-php">
 // routes/web.php
 
 &lt;?php
@@ -176,7 +181,7 @@ Route::any('/{any}', HotSwapJSController::class)
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li>
                             <strong>Route <code>frontend</code>:</strong> Handles POST requests to change the current frontend. It uses the <code>FrontendSwapController</code>.
                         </li>
@@ -194,7 +199,7 @@ Route::any('/{any}', HotSwapJSController::class)
                     <!-- FrontendSwapController -->
                     <h3 id="frontendswapcontroller" class="text-xl font-semibold mt-6 mb-4">FrontendSwapController</h3>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-php text-sm">
+<code class="language-php">
 // app/Http/Controllers/FrontendSwapController.php
 
 &lt;?php
@@ -231,7 +236,7 @@ class FrontendSwapController extends Controller
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li><strong>Purpose:</strong> Updates the current frontend based on user selection and redirects to the home route.</li>
                         <li><strong>Dependency Injection:</strong> Uses the <code>FrontendServiceInterface</code> to interact with the frontend session data.</li>
                         <li><strong>Validation:</strong> Uses <code>FrontendSwapRequest</code> to validate the incoming request data.</li>
@@ -240,7 +245,7 @@ class FrontendSwapController extends Controller
                     <!-- HotSwapJSController -->
                     <h3 id="hotswapjscontroller" class="text-xl font-semibold mt-6 mb-4">HotSwapJSController</h3>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-php text-sm">
+<code class="language-php">
 // app/Http/Controllers/HotSwapJSController.php
 
 &lt;?php
@@ -276,7 +281,7 @@ class HotSwapJSController extends Controller
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li><strong>Purpose:</strong> Serves the view corresponding to the current frontend stored in the session.</li>
                         <li><strong>Dynamic View Rendering:</strong> Returns the Blade view based on the frontend selected.</li>
                     </ul>
@@ -287,7 +292,7 @@ class HotSwapJSController extends Controller
                     <!-- FrontendService -->
                     <h3 id="frontendservice" class="text-xl font-semibold mt-6 mb-4">FrontendService</h3>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-php text-sm">
+<code class="language-php">
 // app/Services/FrontendService.php
 
 &lt;?php
@@ -313,10 +318,10 @@ class FrontendService implements FrontendServiceInterface
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li><strong>Purpose:</strong> Manages the frontend selection stored in the session.</li>
                         <li><strong>Methods:</strong>
-                            <ul class="list-disc list-inside ml-4">
+                            <ul class="list-disc list-inside">
                                 <li><code>getCurrentFrontend()</code>: Retrieves the current frontend from the session or returns the default.</li>
                                 <li><code>setCurrentFrontend($frontend)</code>: Sets the current frontend in the session.</li>
                             </ul>
@@ -329,7 +334,7 @@ class FrontendService implements FrontendServiceInterface
                     <!-- FrontendSwapRequest -->
                     <h3 id="frontendswaprequest" class="text-xl font-semibold mt-6 mb-4">FrontendSwapRequest</h3>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-php text-sm">
+<code class="language-php">
 // app/Http/Requests/FrontendSwapRequest.php
 
 &lt;?php
@@ -367,10 +372,10 @@ class FrontendSwapRequest extends FormRequest
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li><strong>Purpose:</strong> Validates the frontend selection from the request.</li>
                         <li><strong>Validation Rules:</strong>
-                            <ul class="list-disc list-inside ml-4">
+                            <ul class="list-disc list-inside">
                                 <li>The <code>frontend</code> field is required and must be one of the allowed frontends specified in the configuration.</li>
                             </ul>
                         </li>
@@ -382,7 +387,7 @@ class FrontendSwapRequest extends FormRequest
                         Create a configuration file <code>config/hotswapjs.php</code>:
                     </p>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-php text-sm">
+<code class="language-php">
 // config/hotswapjs.php
 
 &lt;?php
@@ -408,7 +413,7 @@ return [
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li><strong>frontends:</strong> An array of allowed frontend names.</li>
                         <li><strong>default_frontend:</strong> The default frontend to use if none is selected.</li>
                     </ul>
@@ -422,7 +427,7 @@ return [
                         **`angular.json`:**
                     </p>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-json text-sm">
+<code class="language-json">
 // angular/angular.json
 
 {
@@ -503,7 +508,7 @@ return [
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li><strong>outputPath:</strong> Specifies where to output the build files (<code>../hotswapjs/public/angular</code>).</li>
                         <li><strong>baseHref &amp; deployUrl:</strong> Set to ensure assets are correctly referenced when served from the Laravel application.</li>
                         <li><strong>Copying index.html:</strong> After building, we need to copy <code>index.html</code> to Laravel's views.</li>
@@ -513,7 +518,7 @@ return [
                         **`package.json` Scripts:**
                     </p>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-json text-sm">
+<code class="language-json">
 // angular/package.json
 
 {
@@ -534,7 +539,7 @@ return [
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li><strong>build:prod Script:</strong> Builds the Angular application and copies the <code>index.html</code> to Laravel's <code>resources/views</code> directory as <code>angular.blade.php</code>.</li>
                     </ul>
 
@@ -544,7 +549,7 @@ return [
                         **`vite.config.js`:**
                     </p>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-js text-sm">
+<code class="language-js">
 // vue/vite.config.js
 
 import { fileURLToPath, URL } from 'node:url'
@@ -575,7 +580,7 @@ export default defineConfig({
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li><strong>outDir:</strong> Outputs the build files to Laravel's public folder (<code>../hotswapjs/public/vue</code>).</li>
                         <li><strong>base:</strong> Sets the base path for assets to <code>/vue/</code> to ensure correct asset referencing.</li>
                     </ul>
@@ -584,7 +589,7 @@ export default defineConfig({
                         **`package.json` Scripts:**
                     </p>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-json text-sm">
+<code class="language-json">
 // vue/package.json
 
 {
@@ -609,7 +614,7 @@ export default defineConfig({
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li><strong>build:prod Script:</strong> Builds the Vue application and copies the <code>index.html</code> to Laravel's <code>resources/views</code> directory as <code>vue.blade.php</code>.</li>
                     </ul>
 
@@ -622,7 +627,7 @@ export default defineConfig({
                         **`vite.config.js` Template:**
                     </p>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-js text-sm">
+<code class="language-js">
 // [frontend-project]/vite.config.js
 
 import { defineConfig } from 'vite'
@@ -641,7 +646,7 @@ export default defineConfig({
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li><strong>outDir:</strong> Outputs build files to the corresponding directory in Laravel's public folder.</li>
                         <li><strong>base:</strong> Ensures assets are correctly referenced.</li>
                     </ul>
@@ -650,7 +655,7 @@ export default defineConfig({
                         **`package.json` Scripts Template:**
                     </p>
                     <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
-<code class="language-json text-sm">
+<code class="language-json">
 // [frontend-project]/package.json
 
 {
@@ -666,7 +671,7 @@ export default defineConfig({
                     <p>
                         <strong>Explanation:</strong>
                     </p>
-                    <ul class="list-disc list-inside ml-4">
+                    <ul class="list-disc list-inside">
                         <li><strong>build:prod Script:</strong> Builds the application and copies the <code>index.html</code> to Laravel's views directory.</li>
                     </ul>
 
