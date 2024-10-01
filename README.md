@@ -501,7 +501,3 @@ export default defineConfig({
 By organizing the project folders side-by-side and configuring each frontend's build process to output to the Laravel application's public directory, we can seamlessly swap between different frontend frameworks. The Laravel application uses session management to keep track of the user's selected frontend and serves the appropriate Blade view.
 
 This setup allows for a semi-monolithic application where Laravel serves the frontend and respects the frontend's routes while still handling API routes appropriately. It's a flexible solution for projects where the frontend framework may change or when showcasing multiple frontend implementations.
-
----
-
-**Note:** Always ensure that asset paths and configurations are correctly set to prevent issues with asset loading and routing. Additionally, consider automating the build and deployment process for each frontend to streamline development.
