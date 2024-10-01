@@ -1,144 +1,694 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <!-- Meta and Title -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HotSwapJS</title>
 
-        <title>HotSwapJS</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <!-- Styles -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="font-sans antialiased bg-gray-50 text-black dark:bg-gray-900 dark:text-white">
+<div class="bg-gray-50 dark:bg-gray-900">
+    @include('partials.frontend-selector')
 
-        <!-- Styles -->
-        <style>
-            /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Figtree, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.absolute{position:absolute}.relative{position:relative}.-left-20{left:-5rem}.top-0{top:0px}.-bottom-16{bottom:-4rem}.-left-16{left:-4rem}.-mx-3{margin-left:-0.75rem;margin-right:-0.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.aspect-video{aspect-ratio:16 / 9}.size-12{width:3rem;height:3rem}.size-5{width:1.25rem;height:1.25rem}.size-6{width:1.5rem;height:1.5rem}.h-12{height:3rem}.h-40{height:10rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-full{width:100%}.w-\[calc\(100\%\+8rem\)\]{width:calc(100% + 8rem)}.w-auto{width:auto}.max-w-\[877px\]{max-width:877px}.max-w-2xl{max-width:42rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.items-stretch{align-items:stretch}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.self-center{align-self:center}.overflow-hidden{overflow:hidden}.rounded-\[10px\]{border-radius:10px}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-sm{border-radius:0.125rem}.bg-\[\#FF2D20\]\/10{background-color:rgb(255 45 32 / 0.1)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.from-transparent{--tw-gradient-from:transparent var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 0 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-white{--tw-gradient-to:rgb(255 255 255 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #fff var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-white{--tw-gradient-to:#fff var(--tw-gradient-to-position)}.stroke-\[\#FF2D20\]{stroke:#FF2D20}.object-cover{object-fit:cover}.object-top{object-position:top}.p-6{padding:1.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pt-3{padding-top:0.75rem}.text-center{text-align:center}.font-sans{font-family:Figtree, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-sm\/relaxed{font-size:0.875rem;line-height:1.625}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-semibold{font-weight:600}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-\[0px_14px_34px_0px_rgba\(0\2c 0\2c 0\2c 0\.08\)\]{--tw-shadow:0px 14px 34px 0px rgba(0,0,0,0.08);--tw-shadow-colored:0px 14px 34px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-transparent{--tw-ring-color:transparent}.ring-white\/\[0\.05\]{--tw-ring-color:rgb(255 255 255 / 0.05)}.drop-shadow-\[0px_4px_34px_rgba\(0\2c 0\2c 0\2c 0\.06\)\]{--tw-drop-shadow:drop-shadow(0px 4px 34px rgba(0,0,0,0.06));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow-\[0px_4px_34px_rgba\(0\2c 0\2c 0\2c 0\.25\)\]{--tw-drop-shadow:drop-shadow(0px 4px 34px rgba(0,0,0,0.25));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.selection\:bg-\[\#FF2D20\] *::selection{--tw-bg-opacity:1;background-color:rgb(255 45 32 / var(--tw-bg-opacity))}.selection\:text-white *::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.selection\:bg-\[\#FF2D20\]::selection{--tw-bg-opacity:1;background-color:rgb(255 45 32 / var(--tw-bg-opacity))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.hover\:text-black:hover{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity))}.hover\:text-black\/70:hover{color:rgb(0 0 0 / 0.7)}.hover\:ring-black\/20:hover{--tw-ring-color:rgb(0 0 0 / 0.2)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus-visible\:ring-1:focus-visible{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus-visible\:ring-\[\#FF2D20\]:focus-visible{--tw-ring-opacity:1;--tw-ring-color:rgb(255 45 32 / var(--tw-ring-opacity))}@media (min-width: 640px){.sm\:size-16{width:4rem;height:4rem}.sm\:size-6{width:1.5rem;height:1.5rem}.sm\:pt-5{padding-top:1.25rem}}@media (min-width: 768px){.md\:row-span-3{grid-row:span 3 / span 3}}@media (min-width: 1024px){.lg\:col-start-2{grid-column-start:2}.lg\:h-16{height:4rem}.lg\:max-w-7xl{max-width:80rem}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:flex-col{flex-direction:column}.lg\:items-end{align-items:flex-end}.lg\:justify-center{justify-content:center}.lg\:gap-8{gap:2rem}.lg\:p-10{padding:2.5rem}.lg\:pb-10{padding-bottom:2.5rem}.lg\:pt-0{padding-top:0px}.lg\:text-\[\#FF2D20\]{--tw-text-opacity:1;color:rgb(255 45 32 / var(--tw-text-opacity))}}@media (prefers-color-scheme: dark){.dark\:block{display:block}.dark\:hidden{display:none}.dark\:bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity))}.dark\:bg-zinc-900{--tw-bg-opacity:1;background-color:rgb(24 24 27 / var(--tw-bg-opacity))}.dark\:via-zinc-900{--tw-gradient-to:rgb(24 24 27 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #18181b var(--tw-gradient-via-position), var(--tw-gradient-to)}.dark\:to-zinc-900{--tw-gradient-to:#18181b var(--tw-gradient-to-position)}.dark\:text-white\/50{color:rgb(255 255 255 / 0.5)}.dark\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:text-white\/70{color:rgb(255 255 255 / 0.7)}.dark\:ring-zinc-800{--tw-ring-opacity:1;--tw-ring-color:rgb(39 39 42 / var(--tw-ring-opacity))}.dark\:hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:hover\:text-white\/70:hover{color:rgb(255 255 255 / 0.7)}.dark\:hover\:text-white\/80:hover{color:rgb(255 255 255 / 0.8)}.dark\:hover\:ring-zinc-700:hover{--tw-ring-opacity:1;--tw-ring-color:rgb(63 63 70 / var(--tw-ring-opacity))}.dark\:focus-visible\:ring-\[\#FF2D20\]:focus-visible{--tw-ring-opacity:1;--tw-ring-color:rgb(255 45 32 / var(--tw-ring-opacity))}.dark\:focus-visible\:ring-white:focus-visible{--tw-ring-opacity:1;--tw-ring-color:rgb(255 255 255 / var(--tw-ring-opacity))}}
-        </style>
-    </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-        <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
-            <img id="background" class="absolute -left-20 top-0 max-w-[877px]" src="https://laravel.com/assets/img/welcome/background.svg" />
-            <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-                <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-                    <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
-                        <div class="flex lg:justify-center lg:col-start-2">
-                            @include('partials.frontend-selector')
-                        </div>
-                    </header>
+    <div class="relative min-h-screen flex flex-col items-center justify-center">
+        <!-- Background Image -->
+        <img id="background" class="absolute -left-20 top-0 max-w-[877px]" src="https://laravel.com/assets/img/welcome/background.svg" alt="background image"/>
 
-                    <main class="mt-6">
-                        <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
-                            <a
-                                href="https://laravel.com/docs"
-                                id="docs-card"
-                                class="flex flex-col items-start gap-6 overflow-hidden rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] md:row-span-3 lg:p-10 lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]"
-                            >
-                                <div id="screenshot-container" class="relative flex w-full flex-1 items-stretch">
-                                    <img
-                                        src="https://laravel.com/assets/img/welcome/docs-light.svg"
-                                        alt="Laravel documentation screenshot"
-                                        class="aspect-video h-full w-full flex-1 rounded-[10px] object-top object-cover drop-shadow-[0px_4px_34px_rgba(0,0,0,0.06)] dark:hidden"
-                                        onerror="
-                                            document.getElementById('screenshot-container').classList.add('!hidden');
-                                            document.getElementById('docs-card').classList.add('!row-span-1');
-                                            document.getElementById('docs-card-content').classList.add('!flex-row');
-                                            document.getElementById('background').classList.add('!hidden');
-                                        "
-                                    />
-                                    <img
-                                        src="https://laravel.com/assets/img/welcome/docs-dark.svg"
-                                        alt="Laravel documentation screenshot"
-                                        class="hidden aspect-video h-full w-full flex-1 rounded-[10px] object-top object-cover drop-shadow-[0px_4px_34px_rgba(0,0,0,0.25)] dark:block"
-                                    />
-                                    <div
-                                        class="absolute -bottom-16 -left-16 h-40 w-[calc(100%+8rem)] bg-gradient-to-b from-transparent via-white to-white dark:via-zinc-900 dark:to-zinc-900"
-                                    ></div>
-                                </div>
+        <!-- Content Container -->
+        <div class="relative w-full max-w-6xl px-6 py-8">
+            <!-- Blog Content -->
+            <div class="mt-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                <article class="prose prose-2xl dark:prose-invert mx-auto">
+                    <!-- Blog Post Content Starts Here -->
+                    <!-- Title -->
+                    <h1 class="text-3xl font-bold mb-4 text-center">
+                        HotSwapJS: Swapping Multiple Frontends in a Laravel Application
+                    </h1>
 
-                                <div class="relative flex items-center gap-6 lg:items-end">
-                                    <div id="docs-card-content" class="flex items-start gap-6 lg:flex-col">
-                                        <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
-                                            <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="#FF2D20" d="M23 4a1 1 0 0 0-1.447-.894L12.224 7.77a.5.5 0 0 1-.448 0L2.447 3.106A1 1 0 0 0 1 4v13.382a1.99 1.99 0 0 0 1.105 1.79l9.448 4.728c.14.065.293.1.447.1.154-.005.306-.04.447-.105l9.453-4.724a1.99 1.99 0 0 0 1.1-1.789V4ZM3 6.023a.25.25 0 0 1 .362-.223l7.5 3.75a.251.251 0 0 1 .138.223v11.2a.25.25 0 0 1-.362.224l-7.5-3.75a.25.25 0 0 1-.138-.22V6.023Zm18 11.2a.25.25 0 0 1-.138.224l-7.5 3.75a.249.249 0 0 1-.329-.099.249.249 0 0 1-.033-.12V9.772a.251.251 0 0 1 .138-.224l7.5-3.75a.25.25 0 0 1 .362.224v11.2Z"/><path fill="#FF2D20" d="m3.55 1.893 8 4.048a1.008 1.008 0 0 0 .9 0l8-4.048a1 1 0 0 0-.9-1.785l-7.322 3.706a.506.506 0 0 1-.452 0L4.454.108a1 1 0 0 0-.9 1.785H3.55Z"/></svg>
-                                        </div>
+                    <!-- GitHub Link -->
+                    <div class="flex justify-center mb-6">
+                        <a href="https://github.com/hotsaucejake/hotswapjs" target="_blank" class="flex items-center text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                            <!-- GitHub Icon -->
+                            <svg class="w-6 h-6 mr-2 fill-current" viewBox="0 0 16 16" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                                        0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01
+                                        1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+                                        0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 012 0c1.53-1.04
+                                        2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65
+                                        3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013
+                                        8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                            </svg>
+                            View on GitHub
+                        </a>
+                    </div>
 
-                                        <div class="pt-3 sm:pt-5 lg:pt-0">
-                                            <h2 class="text-xl font-semibold text-black dark:text-white">Documentation</h2>
+                    <!-- Introduction -->
+                    <p>
+                        I'll walk you through how I configured a Laravel application to serve multiple JavaScript frontends, including Angular, Lit, Preact, React, Solid, Svelte, Vanilla TypeScript, and Vue, &mdash; and even the default Blade templates. This setup allows you to swap out the frontend of your application seamlessly, which is particularly useful if you're undecided on which frontend framework to use or if you want to showcase different frontend implementations.
+                    </p>
 
-                                            <p class="mt-4 text-sm/relaxed">
-                                                Laravel has wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
-                                            </p>
-                                        </div>
-                                    </div>
+                    <p>
+                        <strong>Note:</strong> All project folders are organized side-by-side to simulate separate projects, but the assets are bundled into the <code>public</code> folder of the Laravel application.
+                    </p>
 
-                                    <svg class="size-6 shrink-0 stroke-[#FF2D20]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-                                </div>
-                            </a>
+                    <p>
+                        We also respect the routing of the frontend frameworks, allowing Laravel to serve the frontend and handle API routes appropriately. You can check this out with the Vue project selecting different routes.
+                    </p>
 
-                            <a
-                                href="https://laracasts.com"
-                                class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]"
-                            >
-                                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
-                                    <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g fill="#FF2D20"><path d="M24 8.25a.5.5 0 0 0-.5-.5H.5a.5.5 0 0 0-.5.5v12a2.5 2.5 0 0 0 2.5 2.5h19a2.5 2.5 0 0 0 2.5-2.5v-12Zm-7.765 5.868a1.221 1.221 0 0 1 0 2.264l-6.626 2.776A1.153 1.153 0 0 1 8 18.123v-5.746a1.151 1.151 0 0 1 1.609-1.035l6.626 2.776ZM19.564 1.677a.25.25 0 0 0-.177-.427H15.6a.106.106 0 0 0-.072.03l-4.54 4.543a.25.25 0 0 0 .177.427h3.783c.027 0 .054-.01.073-.03l4.543-4.543ZM22.071 1.318a.047.047 0 0 0-.045.013l-4.492 4.492a.249.249 0 0 0 .038.385.25.25 0 0 0 .14.042h5.784a.5.5 0 0 0 .5-.5v-2a2.5 2.5 0 0 0-1.925-2.432ZM13.014 1.677a.25.25 0 0 0-.178-.427H9.101a.106.106 0 0 0-.073.03l-4.54 4.543a.25.25 0 0 0 .177.427H8.4a.106.106 0 0 0 .073-.03l4.54-4.543ZM6.513 1.677a.25.25 0 0 0-.177-.427H2.5A2.5 2.5 0 0 0 0 3.75v2a.5.5 0 0 0 .5.5h1.4a.106.106 0 0 0 .073-.03l4.54-4.543Z"/></g></svg>
-                                </div>
+                    <!-- Table of Contents -->
+                    <h2 id="table-of-contents" class="text-2xl font-semibold mt-8 mb-4">Table of Contents</h2>
+                    <ul class="list-disc list-inside">
+                        <li><a href="#introduction" class="text-blue-600 hover:underline">Introduction</a></li>
+                        <li><a href="#project-structure" class="text-blue-600 hover:underline">Project Structure</a></li>
+                        <li><a href="#laravel-routes-setup" class="text-blue-600 hover:underline">Laravel Routes Setup</a></li>
+                        <li>
+                            <a href="#controllers" class="text-blue-600 hover:underline">Controllers</a>
+                            <ul class="ml-6 list-disc list-inside">
+                                <li><a href="#frontendswapcontroller" class="text-blue-600 hover:underline">FrontendSwapController</a></li>
+                                <li><a href="#hotswapjscontroller" class="text-blue-600 hover:underline">HotSwapJSController</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#services" class="text-blue-600 hover:underline">Services</a>
+                            <ul class="ml-6 list-disc list-inside">
+                                <li><a href="#frontendservice" class="text-blue-600 hover:underline">FrontendService</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#requests" class="text-blue-600 hover:underline">Requests</a>
+                            <ul class="ml-6 list-disc list-inside">
+                                <li><a href="#frontendswaprequest" class="text-blue-600 hover:underline">FrontendSwapRequest</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#configuration" class="text-blue-600 hover:underline">Configuration</a></li>
+                        <li>
+                            <a href="#frontend-configuration" class="text-blue-600 hover:underline">Frontend Configuration</a>
+                            <ul class="ml-6 list-disc list-inside">
+                                <li><a href="#angular-setup" class="text-blue-600 hover:underline">Angular Setup</a></li>
+                                <li><a href="#vue-setup" class="text-blue-600 hover:underline">Vue Setup</a></li>
+                                <li><a href="#other-frontend-frameworks" class="text-blue-600 hover:underline">Other Frontend Frameworks</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#conclusion" class="text-blue-600 hover:underline">Conclusion</a></li>
+                    </ul>
 
-                                <div class="pt-3 sm:pt-5">
-                                    <h2 class="text-xl font-semibold text-black dark:text-white">Laracasts</h2>
+                    <h2 id="introduction" class="text-2xl font-semibold mt-8 mb-4">Introduction</h2>
+                    <p>
+                        A few years ago, I started a personal project using Laravel for the API backend. I was unsure which frontend framework to use, so I devised a way to swap out the frontend while interacting with my API. I wanted a semi-monolithic application where Laravel would serve the frontend and respect the frontend's routes while using my API routes.
+                    </p>
+                    <p>
+                        This explains how to set up a Laravel application to serve multiple frontends and switch between them dynamically using session management.
+                    </p>
 
-                                    <p class="mt-4 text-sm/relaxed">
-                                        Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                    </p>
-                                </div>
+                    <!-- Project Structure -->
+                    <h2 id="project-structure" class="text-2xl font-semibold mt-8 mb-4">Project Structure</h2>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-bash text-sm">
+hotswapjs/
+├── angular/          # Angular project
+├── lit/              # Lit project
+├── preact/           # Preact project
+├── react/            # React project
+├── solid/            # Solid project
+├── svelte/           # Svelte project
+├── vanilla/          # Vanilla TypeScript project
+├── vue/              # Vue project
+└── hotswapjs/        # Laravel application
+    ├── app/
+    ├── config/
+    ├── public/
+    │   ├── angular/
+    │   ├── lit/
+    │   ├── preact/
+    │   ├── react/
+    │   ├── solid/
+    │   ├── svelte/
+    │   ├── vanilla/
+    │   └── vue/
+    ├── resources/
+    │   └── views/
+    │       ├── angular.blade.php
+    │       ├── lit.blade.php
+    │       ├── preact.blade.php
+    │       ├── react.blade.php
+    │       ├── solid.blade.php
+    │       ├── svelte.blade.php
+    │       ├── vanilla.blade.php
+    │       └── vue.blade.php
+    └── routes/
+        └── web.php
+</code>
+        </pre>
 
-                                <svg class="size-6 shrink-0 self-center stroke-[#FF2D20]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-                            </a>
+                    <!-- Laravel Routes Setup -->
+                    <h2 id="laravel-routes-setup" class="text-2xl font-semibold mt-8 mb-4">Laravel Routes Setup</h2>
+                    <p>
+                        In the <code>routes/web.php</code> file, we define the routes needed for frontend swapping and handling all non-API requests.
+                    </p>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-php text-sm">
+// routes/web.php
 
-                            <a
-                                href="https://laravel-news.com"
-                                class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]"
-                            >
-                                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
-                                    <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g fill="#FF2D20"><path d="M8.75 4.5H5.5c-.69 0-1.25.56-1.25 1.25v4.75c0 .69.56 1.25 1.25 1.25h3.25c.69 0 1.25-.56 1.25-1.25V5.75c0-.69-.56-1.25-1.25-1.25Z"/><path d="M24 10a3 3 0 0 0-3-3h-2V2.5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2V20a3.5 3.5 0 0 0 3.5 3.5h17A3.5 3.5 0 0 0 24 20V10ZM3.5 21.5A1.5 1.5 0 0 1 2 20V3a.5.5 0 0 1 .5-.5h14a.5.5 0 0 1 .5.5v17c0 .295.037.588.11.874a.5.5 0 0 1-.484.625L3.5 21.5ZM22 20a1.5 1.5 0 1 1-3 0V9.5a.5.5 0 0 1 .5-.5H21a1 1 0 0 1 1 1v10Z"/><path d="M12.751 6.047h2a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-2A.75.75 0 0 1 12 7.3v-.5a.75.75 0 0 1 .751-.753ZM12.751 10.047h2a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-2A.75.75 0 0 1 12 11.3v-.5a.75.75 0 0 1 .751-.753ZM4.751 14.047h10a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-10A.75.75 0 0 1 4 15.3v-.5a.75.75 0 0 1 .751-.753ZM4.75 18.047h7.5a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-7.5A.75.75 0 0 1 4 19.3v-.5a.75.75 0 0 1 .75-.753Z"/></g></svg>
-                                </div>
+&lt;?php
 
-                                <div class="pt-3 sm:pt-5">
-                                    <h2 class="text-xl font-semibold text-black dark:text-white">Laravel News</h2>
+use App\Http\Controllers\FrontendSwapController;
+use App\Http\Controllers\HotSwapJSController;
+use Illuminate\Support\Facades\Route;
 
-                                    <p class="mt-4 text-sm/relaxed">
-                                        Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                    </p>
-                                </div>
+Route::post('frontend', FrontendSwapController::class)
+    -&gt;name('frontend');
 
-                                <svg class="size-6 shrink-0 self-center stroke-[#FF2D20]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-                            </a>
+// This route captures all routes (/{any}) and passes them to the HotSwapJSController
+// The where clause excludes any routes that start with 'api', allowing your API routes to function normally.
+Route::any('/{any}', HotSwapJSController::class)
+    -&gt;where('any', '^(?!api).*$')
+    -&gt;name('home');
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>
+                            <strong>Route <code>frontend</code>:</strong> Handles POST requests to change the current frontend. It uses the <code>FrontendSwapController</code>.
+                        </li>
+                        <li>
+                            <strong>Route <code>home</code>:</strong> Captures all requests except those starting with <code>api</code> and delegates them to the <code>HotSwapJSController</code>.
+                        </li>
+                        <li>
+                            This allows for routing with your frontend frameworks while still allowing Laravel to handle API routes.
+                        </li>
+                    </ul>
 
-                            <div class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]">
-                                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
-                                    <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <g fill="#FF2D20">
-                                            <path
-                                                d="M16.597 12.635a.247.247 0 0 0-.08-.237 2.234 2.234 0 0 1-.769-1.68c.001-.195.03-.39.084-.578a.25.25 0 0 0-.09-.267 8.8 8.8 0 0 0-4.826-1.66.25.25 0 0 0-.268.181 2.5 2.5 0 0 1-2.4 1.824.045.045 0 0 0-.045.037 12.255 12.255 0 0 0-.093 3.86.251.251 0 0 0 .208.214c2.22.366 4.367 1.08 6.362 2.118a.252.252 0 0 0 .32-.079 10.09 10.09 0 0 0 1.597-3.733ZM13.616 17.968a.25.25 0 0 0-.063-.407A19.697 19.697 0 0 0 8.91 15.98a.25.25 0 0 0-.287.325c.151.455.334.898.548 1.328.437.827.981 1.594 1.619 2.28a.249.249 0 0 0 .32.044 29.13 29.13 0 0 0 2.506-1.99ZM6.303 14.105a.25.25 0 0 0 .265-.274 13.048 13.048 0 0 1 .205-4.045.062.062 0 0 0-.022-.07 2.5 2.5 0 0 1-.777-.982.25.25 0 0 0-.271-.149 11 11 0 0 0-5.6 2.815.255.255 0 0 0-.075.163c-.008.135-.02.27-.02.406.002.8.084 1.598.246 2.381a.25.25 0 0 0 .303.193 19.924 19.924 0 0 1 5.746-.438ZM9.228 20.914a.25.25 0 0 0 .1-.393 11.53 11.53 0 0 1-1.5-2.22 12.238 12.238 0 0 1-.91-2.465.248.248 0 0 0-.22-.187 18.876 18.876 0 0 0-5.69.33.249.249 0 0 0-.179.336c.838 2.142 2.272 4 4.132 5.353a.254.254 0 0 0 .15.048c1.41-.01 2.807-.282 4.117-.802ZM18.93 12.957l-.005-.008a.25.25 0 0 0-.268-.082 2.21 2.21 0 0 1-.41.081.25.25 0 0 0-.217.2c-.582 2.66-2.127 5.35-5.75 7.843a.248.248 0 0 0-.09.299.25.25 0 0 0 .065.091 28.703 28.703 0 0 0 2.662 2.12.246.246 0 0 0 .209.037c2.579-.701 4.85-2.242 6.456-4.378a.25.25 0 0 0 .048-.189 13.51 13.51 0 0 0-2.7-6.014ZM5.702 7.058a.254.254 0 0 0 .2-.165A2.488 2.488 0 0 1 7.98 5.245a.093.093 0 0 0 .078-.062 19.734 19.734 0 0 1 3.055-4.74.25.25 0 0 0-.21-.41 12.009 12.009 0 0 0-10.4 8.558.25.25 0 0 0 .373.281 12.912 12.912 0 0 1 4.826-1.814ZM10.773 22.052a.25.25 0 0 0-.28-.046c-.758.356-1.55.635-2.365.833a.25.25 0 0 0-.022.48c1.252.43 2.568.65 3.893.65.1 0 .2 0 .3-.008a.25.25 0 0 0 .147-.444c-.526-.424-1.1-.917-1.673-1.465ZM18.744 8.436a.249.249 0 0 0 .15.228 2.246 2.246 0 0 1 1.352 2.054c0 .337-.08.67-.23.972a.25.25 0 0 0 .042.28l.007.009a15.016 15.016 0 0 1 2.52 4.6.25.25 0 0 0 .37.132.25.25 0 0 0 .096-.114c.623-1.464.944-3.039.945-4.63a12.005 12.005 0 0 0-5.78-10.258.25.25 0 0 0-.373.274c.547 2.109.85 4.274.901 6.453ZM9.61 5.38a.25.25 0 0 0 .08.31c.34.24.616.561.8.935a.25.25 0 0 0 .3.127.631.631 0 0 1 .206-.034c2.054.078 4.036.772 5.69 1.991a.251.251 0 0 0 .267.024c.046-.024.093-.047.141-.067a.25.25 0 0 0 .151-.23A29.98 29.98 0 0 0 15.957.764a.25.25 0 0 0-.16-.164 11.924 11.924 0 0 0-2.21-.518.252.252 0 0 0-.215.076A22.456 22.456 0 0 0 9.61 5.38Z"
-                                            />
-                                        </g>
-                                    </svg>
-                                </div>
+                    <!-- Controllers -->
+                    <h2 id="controllers" class="text-2xl font-semibold mt-8 mb-4">Controllers</h2>
 
-                                <div class="pt-3 sm:pt-5">
-                                    <h2 class="text-xl font-semibold text-black dark:text-white">Vibrant Ecosystem</h2>
+                    <!-- FrontendSwapController -->
+                    <h3 id="frontendswapcontroller" class="text-xl font-semibold mt-6 mb-4">FrontendSwapController</h3>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-php text-sm">
+// app/Http/Controllers/FrontendSwapController.php
 
-                                    <p class="mt-4 text-sm/relaxed">
-                                        Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white dark:focus-visible:ring-[#FF2D20]">Forge</a>, <a href="https://vapor.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Vapor</a>, <a href="https://nova.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Nova</a>, <a href="https://envoyer.io" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Envoyer</a>, and <a href="https://herd.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Herd</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Echo</a>, <a href="https://laravel.com/docs/horizon" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Telescope</a>, and more.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </main>
+&lt;?php
 
-                    <footer class="py-16 text-center text-sm text-black dark:text-white/70">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </footer>
-                </div>
+namespace App\Http\Controllers;
+
+use App\Contracts\FrontendServiceInterface;
+use App\Http\Requests\FrontendSwapRequest;
+use Illuminate\Http\RedirectResponse;
+
+class FrontendSwapController extends Controller
+{
+    private FrontendServiceInterface $frontendService;
+
+    public function __construct(FrontendServiceInterface $frontendService)
+    {
+        $this->frontendService = $frontendService;
+    }
+
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(FrontendSwapRequest $request): RedirectResponse
+    {
+        $validated = $request-&gt;validated();
+
+        $this-&gt;frontendService-&gt;setCurrentFrontend($validated['frontend']);
+
+        return redirect()-&gt;route('home', ['any' =&gt; '/']);
+    }
+}
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Purpose:</strong> Updates the current frontend based on user selection and redirects to the home route.</li>
+                        <li><strong>Dependency Injection:</strong> Uses the <code>FrontendServiceInterface</code> to interact with the frontend session data.</li>
+                        <li><strong>Validation:</strong> Uses <code>FrontendSwapRequest</code> to validate the incoming request data.</li>
+                    </ul>
+
+                    <!-- HotSwapJSController -->
+                    <h3 id="hotswapjscontroller" class="text-xl font-semibold mt-6 mb-4">HotSwapJSController</h3>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-php text-sm">
+// app/Http/Controllers/HotSwapJSController.php
+
+&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Contracts\FrontendServiceInterface;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class HotSwapJSController extends Controller
+{
+    private FrontendServiceInterface $frontendService;
+
+    public function __construct(FrontendServiceInterface $frontendService)
+    {
+        $this->frontendService = $frontendService;
+    }
+
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(Request $request): View|RedirectResponse
+    {
+        $frontend = $this-&gt;frontendService-&gt;getCurrentFrontend();
+
+        return view($frontend);
+    }
+}
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Purpose:</strong> Serves the view corresponding to the current frontend stored in the session.</li>
+                        <li><strong>Dynamic View Rendering:</strong> Returns the Blade view based on the frontend selected.</li>
+                    </ul>
+
+                    <!-- Services -->
+                    <h2 id="services" class="text-2xl font-semibold mt-8 mb-4">Services</h2>
+
+                    <!-- FrontendService -->
+                    <h3 id="frontendservice" class="text-xl font-semibold mt-6 mb-4">FrontendService</h3>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-php text-sm">
+// app/Services/FrontendService.php
+
+&lt;?php
+
+namespace App\Services;
+
+use App\Contracts\FrontendServiceInterface;
+
+class FrontendService implements FrontendServiceInterface
+{
+    public function getCurrentFrontend(): string
+    {
+        return session('frontend', config('hotswapjs.default_frontend'));
+    }
+
+    public function setCurrentFrontend(string $frontend): void
+    {
+        session(['frontend' => $frontend]);
+    }
+}
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Purpose:</strong> Manages the frontend selection stored in the session.</li>
+                        <li><strong>Methods:</strong>
+                            <ul class="list-disc list-inside ml-4">
+                                <li><code>getCurrentFrontend()</code>: Retrieves the current frontend from the session or returns the default.</li>
+                                <li><code>setCurrentFrontend($frontend)</code>: Sets the current frontend in the session.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <!-- Requests -->
+                    <h2 id="requests" class="text-2xl font-semibold mt-8 mb-4">Requests</h2>
+
+                    <!-- FrontendSwapRequest -->
+                    <h3 id="frontendswaprequest" class="text-xl font-semibold mt-6 mb-4">FrontendSwapRequest</h3>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-php text-sm">
+// app/Http/Requests/FrontendSwapRequest.php
+
+&lt;?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+class FrontendSwapRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     */
+    public function rules(): array
+    {
+        return [
+            'frontend' => [
+                'required',
+                Rule::in(config('hotswapjs.frontends')),
+            ],
+        ];
+    }
+}
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Purpose:</strong> Validates the frontend selection from the request.</li>
+                        <li><strong>Validation Rules:</strong>
+                            <ul class="list-disc list-inside ml-4">
+                                <li>The <code>frontend</code> field is required and must be one of the allowed frontends specified in the configuration.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <!-- Configuration -->
+                    <h2 id="configuration" class="text-2xl font-semibold mt-8 mb-4">Configuration</h2>
+                    <p>
+                        Create a configuration file <code>config/hotswapjs.php</code>:
+                    </p>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-php text-sm">
+// config/hotswapjs.php
+
+&lt;?php
+
+return [
+
+    'frontends' => [
+        'welcome',
+        'angular',
+        'lit',
+        'preact',
+        'react',
+        'solid',
+        'svelte',
+        'vanilla',
+        'vue',
+    ],
+
+    'default_frontend' => 'welcome',
+];
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>frontends:</strong> An array of allowed frontend names.</li>
+                        <li><strong>default_frontend:</strong> The default frontend to use if none is selected.</li>
+                    </ul>
+
+                    <!-- Frontend Configuration -->
+                    <h2 id="frontend-configuration" class="text-2xl font-semibold mt-8 mb-4">Frontend Configuration</h2>
+
+                    <!-- Angular Setup -->
+                    <h3 id="angular-setup" class="text-xl font-semibold mt-6 mb-4">Angular Setup</h3>
+                    <p>
+                        **`angular.json`:**
+                    </p>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-json text-sm">
+// angular/angular.json
+
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "angular": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "../hotswapjs/public/angular",
+            "baseHref": "/",
+            "deployUrl": "/angular/browser/",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "outputHashing": "all",
+              "baseHref": "/",
+              "deployUrl": "/angular/browser/"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "baseHref": "/",
+              "deployUrl": "/angular/browser/"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+        // ... other configurations ...
+      }
+    }
+  }
+}
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>outputPath:</strong> Specifies where to output the build files (<code>../hotswapjs/public/angular</code>).</li>
+                        <li><strong>baseHref &amp; deployUrl:</strong> Set to ensure assets are correctly referenced when served from the Laravel application.</li>
+                        <li><strong>Copying index.html:</strong> After building, we need to copy <code>index.html</code> to Laravel's views.</li>
+                    </ul>
+
+                    <p>
+                        **`package.json` Scripts:**
+                    </p>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-json text-sm">
+// angular/package.json
+
+{
+  "name": "angular",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "build:prod": "ng build --configuration production && cp ../hotswapjs/public/angular/browser/index.html ../hotswapjs/resources/views/angular.blade.php",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  // ... other dependencies ...
+}
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>build:prod Script:</strong> Builds the Angular application and copies the <code>index.html</code> to Laravel's <code>resources/views</code> directory as <code>angular.blade.php</code>.</li>
+                    </ul>
+
+                    <!-- Vue Setup -->
+                    <h3 id="vue-setup" class="text-xl font-semibold mt-6 mb-4">Vue Setup</h3>
+                    <p>
+                        **`vite.config.js`:**
+                    </p>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-js text-sm">
+// vue/vite.config.js
+
+import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  build: {
+    outDir: '../hotswapjs/public/vue',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: path.resolve(__dirname, 'index.html'),
+    },
+  },
+  base: '/vue/', // Set the base URL for assets
+})
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>outDir:</strong> Outputs the build files to Laravel's public folder (<code>../hotswapjs/public/vue</code>).</li>
+                        <li><strong>base:</strong> Sets the base path for assets to <code>/vue/</code> to ensure correct asset referencing.</li>
+                    </ul>
+
+                    <p>
+                        **`package.json` Scripts:**
+                    </p>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-json text-sm">
+// vue/package.json
+
+{
+  "name": "vue",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "build:prod": "npm run build-only && cp ../hotswapjs/public/vue/index.html ../hotswapjs/resources/views/vue.blade.php"
+  },
+  // ... other dependencies ...
+}
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>build:prod Script:</strong> Builds the Vue application and copies the <code>index.html</code> to Laravel's <code>resources/views</code> directory as <code>vue.blade.php</code>.</li>
+                    </ul>
+
+                    <!-- Other Frontend Frameworks -->
+                    <h3 id="other-frontend-frameworks" class="text-xl font-semibold mt-6 mb-4">Other Frontend Frameworks</h3>
+                    <p>
+                        For other frameworks using Vite (e.g., Lit, Preact, React, Solid, Svelte, Vanilla TypeScript), the configuration follows a similar pattern.
+                    </p>
+                    <p>
+                        **`vite.config.js` Template:**
+                    </p>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-js text-sm">
+// [frontend-project]/vite.config.js
+
+import { defineConfig } from 'vite'
+import &lt;frontend-plugin&gt; from 'vite-plugin-&lt;frontend&gt;' // Replace with the appropriate plugin
+
+export default defineConfig({
+  plugins: [&lt;frontend-plugin&gt;()],
+  build: {
+    outDir: '../hotswapjs/public/&lt;frontend-project&gt;', // Output to Laravel's public folder
+    emptyOutDir: true, // Clear the folder before each build
+  },
+  base: '/&lt;frontend-project&gt;/', // Set the base URL
+})
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>outDir:</strong> Outputs build files to the corresponding directory in Laravel's public folder.</li>
+                        <li><strong>base:</strong> Ensures assets are correctly referenced.</li>
+                    </ul>
+
+                    <p>
+                        **`package.json` Scripts Template:**
+                    </p>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto">
+<code class="language-json text-sm">
+// [frontend-project]/package.json
+
+{
+  // ... other configurations ...
+  "scripts": {
+    "build": "vite build",
+    "build:prod": "npm run build && cp ../hotswapjs/public/&lt;frontend-project&gt;/index.html ../hotswapjs/resources/views/&lt;frontend-project&gt;.blade.php"
+  },
+  // ... other dependencies ...
+}
+</code>
+        </pre>
+                    <p>
+                        <strong>Explanation:</strong>
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>build:prod Script:</strong> Builds the application and copies the <code>index.html</code> to Laravel's views directory.</li>
+                    </ul>
+
+                    <!-- Conclusion -->
+                    <h2 id="conclusion" class="text-2xl font-semibold mt-8 mb-4">Conclusion</h2>
+                    <p>
+                        By organizing the project folders side-by-side and configuring each frontend's build process to output to the Laravel application's public directory, we can seamlessly swap between different frontend frameworks. The Laravel application uses session management to keep track of the user's selected frontend and serves the appropriate Blade view.
+                    </p>
+                    <p>
+                        This setup allows for a semi-monolithic application where Laravel serves the frontend and respects the frontend's routes while still handling API routes appropriately. It's a flexible solution for projects where the frontend framework may change or when showcasing multiple frontend implementations.
+                    </p>
+
+                </article>
+                <!-- Blog Post Content Ends Here -->
             </div>
         </div>
-    </body>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-16 text-center text-sm text-black dark:text-white/70">
+        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+    </footer>
+</div>
+</body>
 </html>
